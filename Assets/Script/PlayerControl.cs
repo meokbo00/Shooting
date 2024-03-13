@@ -13,7 +13,7 @@ public class PlayerControl : MonoBehaviour
     public float maxtime;
     public int power;
 
-
+    public GameManager manager;
     public GameObject bulletA;
     public GameObject bulletB;
 
@@ -121,6 +121,11 @@ public class PlayerControl : MonoBehaviour
                     RightTouch = true;
                     break;
             }
+        }
+        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyBullet")
+        {
+            manager.PlayerRespond();
+            gameObject.SetActive(false);
         }
     }
     void OnTriggerExit2D(Collider2D collision)
